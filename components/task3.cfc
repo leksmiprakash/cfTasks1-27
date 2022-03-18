@@ -1,13 +1,14 @@
 <cfcomponent displayname="checking" hint="Check Different numbers">
     <cffunction name="checkQuery" output="false" access="public">
-        <cfparam name="form.inputValue" default="">
-        <cfset finalList = "inputValue">
-        <cfloop list="finalList" index="i">    
-            <cfif i mod 3>                   
+        <cfset variables.finalList = "#inputValue#">
+        <cfset variables.result=""/>
+        <cfloop list="#finalList#" index="i">    
+            <cfif i mod 3 EQ 0>                   
+                <cfset result&=i&","/>
+            <cfelse>
                 <cfcontinue>
             </cfif>
-            <cfset finalList = "i">
         </cfloop>
-        <cfreturn>
+        <cfreturn result>
     </cffunction>  
 </cfcomponent>

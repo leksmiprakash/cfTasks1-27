@@ -6,11 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <link href="./css/bootstrap.min.css" rel="stylesheet" >
+        <script src="./js/jquery-3.6.0.min.js"></script>
         <script src="./js/validation.js"></script>
         <script>
-            function formSubmitFn(){
-                let fnValue = document.forms['main_form']['inputValue'].value;
-                if (isNaN(fnValue)) {
+            function checkNumber(){
+                let inputValue = document.forms['submitForm']['inputValue'].value;
+                if (isNaN(inputValue)) {
                     alert("Enter a numeric value");
                     return false;
                 }
@@ -20,7 +21,7 @@
     <body>
         <div class="container">
             <div class="row">
-                <form name="mainForm" action="" method="post" onsubmit="return formSubmitFn()">
+                <form name="submitForm" action="" method="post" onsubmit="return checkNumber()">
                     <div class="form-group col-md-4">
                         <label>Input Value</label>
                         <input type="text" name="inputValue" class="form-control" />

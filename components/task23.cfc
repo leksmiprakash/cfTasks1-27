@@ -1,5 +1,5 @@
 <cfcomponent >
-	<cfset theDir = expandPath(".")>
+	<cfset variables.theDir = expandPath(".")>
 	<cfscript>
 		variables.validMimeTypes =  {
 			'application/pdf': {extension: 'pdf', application: 'Adobe Acrobat'}
@@ -8,15 +8,15 @@
 		};
 	</cfscript>
 	<cffile action="upload" filefield="Field12"
-		destination="#theDir#/images" mode="600"
+		destination="#variables.theDir#/images" mode="600"
 		accept="#StructKeyList(variables.validMimeTypes)#"
 		strict="true"
 		result="uploadResult"
 		nameconflict="makeunique">
-	<cfset phone = "#form.Field25#"&"#form.Field25-1#"&"#form.Field25-2#">
-	<cfset salary = "#form.Field16#"&'.'&"#form.Field16-1#">
+	<cfset variables.phone = "#form.Field25#"&"#form.Field25-1#"&"#form.Field25-2#">
+	<cfset variables.salary = "#form.Field16#"&'.'&"#form.Field16-1#">
 	<cffunction name="insertData">
-		<cfquery name = "addemployee" datasource = "cfsample" result="resultList" >
+		<cfquery name = "addemployee"  result="resultList" >
 			INSERT INTO users (position, relocate, start_date, website, document, salary, firstname, lastname, email, phone)
 			VALUES
 			(	<cfqueryparam value = "#form.Field17#" cfsqltype = "cf_sql_varchar"/>,

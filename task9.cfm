@@ -1,25 +1,3 @@
-
-<cfif structKeyExists(Form,"formSubmit")>
-    <cfset key=Form.inputKey>
-    <cfset value=Form.inputValue>
-</cfif>
-
-<cfif NOT StructKeyExists(Session, "mystruct")>
-    <cflock timeout=20 scope="Session" type="Exclusive">
-        <cfset Session.mystruct = structNew()>
-    </cflock>
-</cfif>
-
-<cfif StructKeyExists(Session, "mystruct")>
-    <cfif IsDefined("key") AND  IsDefined("value") >
-        <cfif NOT StructKeyExists(Session.mystruct,"#key#")>
-            <cfset Session.mystruct["#key#"] = #value#>
-            <cfelse>
-                The struct Key : <cfoutput> "#key#"  is already present. Cannot add again. </cfoutput>
-        </cfif>
-    </cfif>
-</cfif>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -48,28 +26,16 @@
                         <input type="Submit" class="btn btn-success" value="Submit" name="formSubmit">
                     </div> 
                 </form>
-                <cfif structKeyExists(Form,"formSubmit")>
-                    <cfset key=Form.inputKey>
-                    <cfset value=Form.inputValue>
-                </cfif>
-
-                <cfif NOT StructKeyExists(Session, "mystruct")>
-                    <cflock timeout=20 scope="Session" type="Exclusive">
-                        <cfset Session.mystruct = structNew()>
-                    </cflock>
-                </cfif>
-
-                <cfif StructKeyExists(Session, "mystruct")>
-                    <cfif IsDefined("key") AND  IsDefined("value") >
-                        <cfif NOT StructKeyExists(Session.mystruct,"#key#")>
-                            <cfset Session.mystruct["#key#"] = #value#>
-                            <cfelse>
-                                The struct Key : <cfoutput> "#key#"  is already present. Cannot add again. </cfoutput>
-                        </cfif>
-                    </cfif>
-                </cfif>
             </div> 
-            Result : <cfdump var="#Session.mystruct#"> 
+            <cfinvoke component="components.task7"  method="structPresent" returnvariable="result">
+            <cfif #result.status# eq "fail">
+                <cfoutput>
+                    Key already present. Cannot add again
+                </cfoutput>
+            </cfif>
+            <cfoutput>
+                <cfdump var="#Session.mystruct#" > 
+            </cfoutput>
         </div>
     </body> 
 </html>

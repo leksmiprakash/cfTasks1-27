@@ -17,11 +17,11 @@
                 <form action="task5.cfm" name="form" method="post" enctype="multipart/form-data" > 
                     <div class="form-group col-md-4">
                         <label>Your Dob</label>
-                        <input type="text" name="yourDob" class="form-control"/>
+                        <input type="text" name="yourDob" class="form-control" placeholder="Eg : 21/02/2000" />
                     </div>
                     <div class="form-group col-md-4">
                         <label>Your Mother Dob</label>
-                        <input type="text" name="motherDob" class="form-control"/>
+                        <input type="text" name="motherDob" class="form-control" placeholder="Eg : 21/02/2000" />
                         <input type="submit" class="btn btn-primary" name="formSubmit" value="Submit"/>
                     </div>
                 </form>

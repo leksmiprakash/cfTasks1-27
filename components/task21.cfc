@@ -1,6 +1,6 @@
 <cfcomponent displayname="checking" hint="Check Different numbers">
     <cffunction name="checkQuery" output="false" access="public">
-        <cfset thisDir = expandPath(".")>
+        <cfset variables.thisDir = expandPath(".")>
         <cfscript>
             variables.validMimeTypes =  {
                 'image/jpeg': {extension: 'jpg'}
@@ -9,7 +9,7 @@
             };
         </cfscript>
         <cffile action="upload" filefield="fileUpload"
-            destination="#thisDir#/attachments" mode="600"
+            destination="#variables.thisDir#/attachments" mode="600"
             accept="#StructKeyList(variables.validMimeTypes)#"
             strict="true"
             result="uploadResult"

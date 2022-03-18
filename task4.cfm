@@ -37,7 +37,7 @@
                             <td>Last day of month </td> 
                             <td>
                                 <cfset dtThisMonth = CreateDate( Year( Now() ), Month( Now() ), 1 )/>
-                                <cfset dtLastDay = (DateAdd( "m", 1, dtThisMonth ) - 1 )/>
+                                <cfset dtLastDay = (DateAdd("m", 1, dtThisMonth ) - 1 )/>
                                 <cfoutput> #DateFormat(dtLastDay, "dd-mmmm-yyyy-dddd" )# </cfoutput>
                             </td> 
                         <tr>

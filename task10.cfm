@@ -1,23 +1,3 @@
-
-<cfif structKeyExists(Form,"formSubmit")>
-    <cfset key=Form.inputKey>
-    <cfset value=Form.inputValue>
-</cfif>
-
-<cfif NOT StructKeyExists(Session, "mystruct")>
-    <cflock timeout=20 scope="Session" type="Exclusive">
-        <cfset Session.mystruct = structNew()>
-    </cflock>
-</cfif>
-
-<cfif StructKeyExists(Session, "mystruct")>
-    <cfif IsDefined("key") AND  IsDefined("value") >
-        <cfif NOT StructKeyExists(Session.mystruct,"#key#")>
-            <cfset Session.mystruct["#key#"] = #value#>
-        </cfif>
-    </cfif>
-</cfif>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -47,8 +27,9 @@
                         <input type="Submit" class="btn btn-success" value="Submit" name="formSubmit">
                     </div> 
                 </form>
-            </div> 
-            Result : <cfdump var="#StructSort(Session.mystruct,"text","asc")#"> 
+            </div>
+            <cfinvoke component="components.task7"  method="structSorting" returnvariable="struct"> 
+            Result : <cfdump var="#StructSort(struct,"text","asc")#"> 
         </div>
     </body> 
 </html>

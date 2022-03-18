@@ -10,25 +10,24 @@
 		    <cfif fileUpload.fileWasSaved>
 			    <cfif IsImageFile("#fileUpload.serverfile#")>
 				    <cfimage action="read" source="#fileUpload.serverfile#" name="myImage">
-				    <cfif ImageGetHeight(myImage) gt 900 or ImageGetWidth(myImage) gt 900>
+				    <cfif ImageGetHeight(myImage) gt 800 or ImageGetWidth(myImage) gt 800>
                         <cffile action="delete" file="#fileUpload.serverDirectory#/#fileUpload.serverFile#">
                         <p> 
-                            The image  uploaded was too large. It must be less than 900 px width
-                             and 900 px height. uploaded image is of #imageGetWidth(myImage)# pixels width
+                            The image  uploaded was too large. It must be less than 800 px width
+                             and 800 px height. uploaded image is of #imageGetWidth(myImage)# pixels width
                              and #imageGetHeight(myImage)# pixels hight.
                         </p>            
 				    <cfelse>
                         <cfset ImageScaleToFit(myImage,20,20,"bilinear")>
                         <cfset newImageName = fileUpload.serverDirectory & "/" &fileUpload.serverFilename & "_thumbnail." &fileUpload.serverFileExt>
                         <cfimage source="#myImage#" action="write" destination="#newImageName#" overwrite="yes"> 
-                        <p> Thumbnail of uploaded img is created </p>
-                        <p>
+                        <p> Created Thumbnail of the image is :
                             <img src="#getFileFromPath(newImageName)#"><br>
                             <form action="task14details.cfm" method="post">
                                 <input type="hidden" name="in" value="#variables.imagename#"/>
                                 <input type="hidden" name="ids" value="#variables.imgdescr#"/>
                                 <input type="hidden" name="im" value="#fileUpload.serverFile#"/>
-                                <button  type="submit" name="viewdata" >#fileUpload.serverFilename & "_thumbnail." & fileUpload.serverFileExt#</button>
+                                <button  type="submit" name="viewdata" class="btn btn-primary" >View Original</button>
                             </form>
                         </p>                  
 				    </cfif>

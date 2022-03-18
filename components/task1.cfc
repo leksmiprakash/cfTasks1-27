@@ -1,10 +1,10 @@
-<cfcomponent displayname="checking" hint="Check Different numbers">
+<cfcomponent displayname="checking">
     <cffunction name="checkQuery" output="false" access="public">
-        <cfset var input = form.inputValue >
+        <cfset variables.input = form.inputValue >
         <cfif input eq 5>
-            <cfset var result = "Very Good" >
+            <cfset variables.result = "Very Good" >
         <cfelseif input eq 4>
-            <cfset var result = "Good" >
+            <cfset variables.result = "Good" >
         <cfelseif input eq 3>
             <cfset var result = "Fair" >
         <cfelse>

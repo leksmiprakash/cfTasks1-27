@@ -1,26 +1,3 @@
-<cfif structKeyExists(Form,"formSubmit")>
-    <cfset key=Form.inputKey>
-    <cfset value=Form.inputValue>
-</cfif>
-
-<cfif NOT StructKeyExists(Session, "mystruct")>
-    <cflock timeout=20 scope="Session" type="Exclusive">
-        <cfset Session.mystruct = structNew()>
-    </cflock>
-</cfif>
-
-<cfif StructKeyExists(Session, "mystruct")>
-    <cfif IsDefined("key") AND  IsDefined("value") >
-        <cfif NOT StructKeyExists(Session.mystruct,"#key#")>
-            <cfset Session.mystruct["#key#"] = #value#>
-            <cfelse>
-                <cfscript>
-                    structUpdate(Session.mystruct,'#key#','#value#'); 
-                </cfscript>
-        </cfif>
-    </cfif>
-</cfif>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -50,6 +27,7 @@
                     </div> 
                 </form>
             </div> 
+            <cfinvoke component="components.task7"  method="structUpdate" returnvariable="struct">  
             Result : <cfdump var="#Session.mystruct#"> 
         </div>
     </body> 

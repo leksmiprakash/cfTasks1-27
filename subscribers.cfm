@@ -4,7 +4,7 @@
    
     <cfset var returnStg = "">
     
-        <cfquery  name="validateUser"  datasource = "cfsample"  result="tmpResult">
+        <cfquery  name="validateUser"   result="tmpResult">
             SELECT EmailId FROM subscribers WHERE EmailId=<cfqueryparam value="#arguments.userEmail#" cfsqltype="cf_sql_varchar" maxlength="255"> 
 
         </cfquery>

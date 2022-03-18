@@ -1,6 +1,6 @@
 <cfcomponent displayname="checking" hint="Check Different numbers">
     <cffunction name="checkQuery" output="false" access="public">
-        <cfset input=#form.inputValue#>
+        <cfset variables.input=#form.inputValue#>
         <cfset variables.result="">
         <cfloop from="1" to=#input# index="i"> 
             <cfif #i# MOD 2 eq 0>

@@ -18,6 +18,5 @@
             </cfinvoke>   
             <cfoutput>Inserted</cfoutput>
         </cfif>
-
     </body>
 </html>

@@ -19,42 +19,42 @@
 <cfif showForm>
 	<cfset captchaHash = hash(captcha)>
 	<cfoutput>
-	<p>
-	Please fill the form below.
-	</p>	
-	<cfif isDefined("errors")>
-	<p>
-	<b>Correct these errors:<br />#errors#</b>
-	</p>
-	</cfif>
-	
-	<form action="#cgi.script_name#" method="post" >
-	<table>
-		<tr>
-			<td>Email:</td>
-			<td><input name="email" type="email" value="#form.email#"></td>
-		</tr>
-		<tr>
-			<td>Enter Text Below:</td>
-			<td><input type="text" name="captcha"></td>
-		</tr>
-		<tr>
-			<td colspan="2">
-			<cfimage action="captcha" width="300" height="75" text="#captcha#">
-			<input type="hidden" name="captchaHash" value="#captchaHash#">
-			</td>
-		</tr>		
-		<tr>
-			<td> </td>
-			<td><input type="submit" name="send" value="Send"></td>
-		</tr>
-	</table>
-	</form>
+		<p>
+		Please fill the form below.
+		</p>	
+		<cfif isDefined("errors")>
+		<p>
+		<b>Correct these errors:<br />#errors#</b>
+		</p>
+		</cfif>
+		
+		<form action="#cgi.script_name#" method="post" >
+			<table>
+				<tr>
+					<td>Email:</td>
+					<td><input name="email" type="email" value="#form.email#"></td>
+				</tr>
+				<tr>
+					<td>Enter Text Below:</td>
+					<td><input type="text" name="captcha"></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+					<cfimage action="captcha" width="300" height="75" text="#captcha#">
+					<input type="hidden" name="captchaHash" value="#captchaHash#">
+					</td>
+				</tr>		
+				<tr>
+					<td> </td>
+					<td><input type="submit" name="send" value="Send"></td>
+				</tr>
+			</table>
+		</form>
 	</cfoutput>	
-	<cfelse>
+<cfelse>
 	<cfoutput>
         <p>
-            Subscription Added.
+            Your Email is added to our subscriptions.
         </p>
 	</cfoutput>	
 </cfif>

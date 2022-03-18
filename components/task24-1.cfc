@@ -1,7 +1,7 @@
 <cfcomponent>
 <cffunction name="getUser" access="remote" returnFormat="JSON">
     <cfargument name="EmailId" type="any" required="true">
-       <cfquery name="getMail" datasource="cfsample">
+       <cfquery name="getMail" >
          SELECT EmailId
                 FROM subscribers 
             WHERE EmailId = "#EmailId#"             

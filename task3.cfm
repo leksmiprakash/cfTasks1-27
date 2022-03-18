@@ -11,7 +11,8 @@
     <body>
         <div class="container">
             <div class="row">
-                <h2>Insert Data</h2> 
+                <h2>Insert Data</h2>
+                <cfparam name="form.inputValue" default=""> 
                 <form action="task3.cfm" name="form" method="post" enctype="multipart/form-data" > 
                 <div class="form-group col-md-4">
                     <label>Input Value</label>
@@ -24,7 +25,7 @@
                 </form> 
             </div>
             <cfif StructKeyExists(Form,'formSubmit')>
-                <cfinvoke component="components.task3"  method="checkQuery" returnvariable="result">
+                <cfinvoke component="components.task3" method="checkQuery" returnvariable="result">
                 <cfoutput>
                     <h5>Result : #result#</h5>
                 </cfoutput>

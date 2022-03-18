@@ -17,7 +17,7 @@
             function checkEmail(){      
                 var userEmail = $('#userEmail').val();
                 $.ajax({
-                url: 'components/subscribers.cfc', 
+                url: 'components/task24-1.cfc', 
                 async: false,
                 data: 
                     { 
